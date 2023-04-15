@@ -74,15 +74,18 @@ WSGI_APPLICATION = 'dj_web.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+""" Se comenta instruccion para MySQL"""
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'python_dj',
-        'USER': 'root',
+        # 'USER': 'root',
+        'USER': 'postgres',
         'PASSWORD': 'root2022',
         'HOST': 'localhost',
-        'PORT': 3307,
+        # 'PORT': 3307,
+        'PORT': 5432,
     }
 }
 
