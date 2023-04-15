@@ -64,3 +64,13 @@ class HouseAPIViewDetail(APIView):
 def house_home(request):
     data = {'data': datetime.now()}
     return JsonResponse(data)
+
+def house_findAll_by_name(request):
+    query_params = request.GET
+    initial_letter = query_params.get("initial_letter", "")
+    limit = int(query_params.get("limit"))
+    offset = int(query_params.get("offset"))
+    print(f"<-- {query_params}")
+    data = House.objects.filter(name__startswith=initial_letter)[offset:limit]
+    serializer = HouseSerializer(data, many=True)
+    return JsonResponse(serializer.data, safe=False, status=status.HTTP_200_OK)
