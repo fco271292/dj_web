@@ -24,5 +24,6 @@ urlpatterns = [
     path('goodbye/', goodbye),
     path('calculate_age/<int:year>', calculate_age),
     path('current_time/', current_time),
-    path('', include('house.urls'))
+    path('', include('house.urls')),
+    path("", include('car.urls')),
 ]
