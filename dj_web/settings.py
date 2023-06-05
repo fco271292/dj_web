@@ -158,7 +158,7 @@ LOGGING = {
             "level": "INFO",
             "class": "logging.FileHandler",
             "formatter": "verbose",
-            "filename": f"{os.getcwd()}\\django_web_1.log",
+            "filename": f"{os.getcwd()}\\django_web.log",
         },
     },
     "root": {
