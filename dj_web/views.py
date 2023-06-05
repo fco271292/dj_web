@@ -3,6 +3,13 @@ from datetime import datetime
 from datetime import date
 import json
 from django.http import JsonResponse
+import logging
+import os
+
+level = logging.INFO
+FORMAT = '%(asctime)s - %(levelname)s - %(process)d --- %(threadName)s - %(module)s %(funcName)s - %(message)s'
+filename = f"{os.getcwd()}\\api.log"
+logging.basicConfig(level=level, format=FORMAT, filename=filename)
 
 def hello(request):
     return HttpResponse(f"HI {datetime.now()}")
@@ -19,4 +26,5 @@ def calculate_age(request, year):
 def current_time(request):
     current_time = date.today()
     data = {'current_time': current_time, 'year': current_time.year, 'month': current_time.month, 'day': current_time.day}
+    logging.info(f"--> {data}")
     return JsonResponse(data)
