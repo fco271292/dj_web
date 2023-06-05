@@ -8,7 +8,7 @@ import os
 
 level = logging.INFO
 FORMAT = '%(asctime)s - %(levelname)s - %(process)d --- %(threadName)s - %(module)s %(funcName)s - %(message)s'
-filename = f"{os.getcwd()}\\api.log"
+filename = f"{os.getcwd()}\\django_web.log"
 logging.basicConfig(level=level, format=FORMAT, filename=filename)
 
 def hello(request):
