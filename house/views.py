@@ -8,7 +8,9 @@ from rest_framework.views import APIView
 
 from house.models import House
 from house.serializers import HouseSerializer
+import logging
 
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 class HouseAPIView(APIView):
@@ -67,10 +69,11 @@ def house_home(request):
 
 def house_findAll_by_name(request):
     query_params = request.GET
+    logger.info (f"--> {query_params}")
     initial_letter = query_params.get("initial_letter", "")
-    limit = int(query_params.get("limit"))
-    offset = int(query_params.get("offset"))
-    print(f"<-- {query_params}")
-    data = House.objects.filter(name__startswith=initial_letter)[offset:limit]
+    limit = int(query_params.get("limit", 100))
+    offset = int(query_params.get("offset", 0))
+    data = House.objects.filter(name__startswith=initial_letter)[offset:limit].values("id","name", "deleted_at", "person")
+    #logger.info(f"--> {data}")
     serializer = HouseSerializer(data, many=True)
     return JsonResponse(serializer.data, safe=False, status=status.HTTP_200_OK)
