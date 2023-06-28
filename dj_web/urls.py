@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from dj_web.views import hello, goodbye, calculate_age, current_time
+from pokemon_api.views import pokemon_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('current_time/', current_time),
     path('', include('house.urls')),
     path("", include('car.urls')),
+    path('pokemeon_api/', pokemon_list)
 ]
