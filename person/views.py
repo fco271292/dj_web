@@ -9,4 +9,4 @@ from person.serializers import PersonSerializer
 class PersonViewSet(ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]

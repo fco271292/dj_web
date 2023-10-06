@@ -3,6 +3,8 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.utils.timezone import now
 from rest_framework import status
+from rest_framework.decorators import permission_classes, api_view
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -67,6 +69,8 @@ def house_home(request):
     data = {'data': datetime.now()}
     return JsonResponse(data)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def house_findAll_by_name(request):
     query_params = request.GET
     logger.info (f"--> {query_params}")
