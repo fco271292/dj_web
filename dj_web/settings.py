@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'django-insecure-w%z+jz^dro)!y!*=)1ob&6-9a01=k2zch4gj8#!*-d!h8i5*(8
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -41,7 +39,9 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'rest_framework_swagger',
     # 'django.contrib.staticfiles',
-    'drf_yasg',
+    # 'drf_yasg',
+    "drf_spectacular",
+    "drf_spectacular_sidecar",
     'house',
     'person',
     'pet',
@@ -78,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dj_web.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 """ Se comenta instruccion para MySQL"""
@@ -95,7 +94,6 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -115,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -127,7 +124,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -137,7 +133,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 LOGGING = {
     "version": 1,
@@ -165,7 +160,21 @@ LOGGING = {
         },
     },
     "root": {
-        "handlers": ["console","file"],
+        "handlers": ["console", "file"],
         "level": "INFO",
     },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API DRF',
+    'DESCRIPTION': 'API Django Rest Framework',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
 }

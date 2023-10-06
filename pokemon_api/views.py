@@ -3,8 +3,9 @@ import json
 import requests
 from django.http import JsonResponse
 from rest_framework import status
+from drf_spectacular.utils import extend_schema
 
-
+@extend_schema(description="Lista pokemon", methods=["GET"])
 def pokemon_list(self):
     url = "https://pokeapi.co/api/v2/pokemon"
     params = {'limit': 3}
