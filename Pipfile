@@ -11,8 +11,9 @@ requests = "*"
 drf-yasg = "*"
 drf-spectacular = "*"
 drf-spectacular-sidecar = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
