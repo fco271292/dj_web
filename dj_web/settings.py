@@ -167,7 +167,11 @@ LOGGING = {
     },
 }
 
-'''By default, clients must pass their API key via the Authorization header. Authorization: Api-Key <API_KEY>'''
+''' By default, clients must pass their API key via the Authorization header. 
+    Authorization: Api-Key <API_KEY>
+    
+    With custom header is sent:
+    X-API-KEY: <API_KEY>'''
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
 
 REST_FRAMEWORK = {
