@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pet',
     'car',
     'rest_framework_simplejwt',
+    'rest_framework_api_key',
 ]
 
 MIDDLEWARE = [
@@ -165,6 +166,8 @@ LOGGING = {
         "level": "INFO",
     },
 }
+
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
