@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'person',
     'pet',
     'car',
+    'phone',
     'rest_framework_simplejwt',
     'rest_framework_api_key',
 ]
