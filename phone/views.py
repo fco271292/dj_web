@@ -1,7 +1,10 @@
+from rest_framework import status
+from rest_framework.decorators import action
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, \
     DestroyModelMixin
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from phone.serializers import PhoneSerializer
@@ -16,3 +19,7 @@ class PhoneViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, RetrieveMod
     pagination_class = PageNumberPagination
     serializer_class = PhoneSerializer
     queryset = Phone.objects.all()
+
+    @action(detail=False, methods=['get'], url_path='view-phone')
+    def view_phone(self, request):
+        return Response(status=status.HTTP_200_OK, data={'data':'PHONE'})
