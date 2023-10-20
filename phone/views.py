@@ -1,5 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, \
     DestroyModelMixin
 from rest_framework.pagination import PageNumberPagination
@@ -19,6 +21,10 @@ class PhoneViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, RetrieveMod
     pagination_class = PageNumberPagination
     serializer_class = PhoneSerializer
     queryset = Phone.objects.all()
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['number']
+    search_fields = ['number']
+    ordering_fields = '__all__'
 
     @action(detail=False, methods=['get'], url_path='view-phone')
     def view_phone(self, request):

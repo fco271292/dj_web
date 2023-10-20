@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'phone',
     'rest_framework_simplejwt',
     'rest_framework_api_key',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
